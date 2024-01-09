@@ -12,17 +12,13 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: gcloud
     args:
-      - run
-      - deploy
+      - 'run'
+      - 'deploy'
       - 'foodition-model'
-      - '--image'
-      - 'us-central1-docker.pkg.dev/$PROJECT_ID/foodition/foodition-model:$COMMIT_SHA'
-      - '--region'
-      - 'us-central1'
-      - '--cpu'
-      - '1'
-      - '--memory'
-      - '2048Mi'
+      - '--image=us-central1-docker.pkg.dev/$PROJECT_ID/foodition/foodition-model:$COMMIT_SHA'
+      - '--region=us-central1'
+      - '--cpu=1'
+      - '--memory=2048Mi'
       - '--allow-unauthenticated'
       - '--set-secrets=BUCKET_NAME=bucket_name:latest,SECRET_KEY=secret_key:latest'
 images:
