@@ -1,9 +1,15 @@
 steps:
   - name: gcr.io/cloud-builders/docker
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/bloomy-model:$COMMIT_SHA', '.']
+    args: 
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/foodition/foodition-model:$COMMIT_SHA'
+      - '.'
   - name: gcr.io/cloud-builders/docker
-    args: ['push', 'us-central1-docker.pkg.dev/$PROJECT-ID/foodition/foodition-model:$COMMIT_SHA']
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - 'push'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/foodition/foodition-model:$COMMIT_SHA'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: gcloud
     args:
       - run
