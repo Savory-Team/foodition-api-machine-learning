@@ -98,10 +98,9 @@ def predict_edible_classification(data):
             x = x / 255
             predicted_class = None
             classificationResult = model_edible_classification.predict(x, batch_size=1)
-            class_list = ['banana-edible', 'banana-inedible', 'bread-edible', 'bread-inedible', 'chicken-edible', 'chicken-inedible', 
-                          'donut-edible','donut-inedible', 'mango-edible', 'mango-inedible', 'pizza-edible','pizza-inedible', 'rice-edible', 'rice-inedible'] 
+            class_list = ['banana-edible', 'banana-inedible', 'bread-edible', 'bread-inedible', 'chicken-edible', 'chicken-inedible', 'donut-edible', 'donut-inedible', 'edible', 'mango-edible', 'mango-inedible', 'pizza-edible','pizza-inedible', 'rice-edible', 'rice-inedible']
             predicted_class = class_list[np.argmax(classificationResult[0])]
-            result = predicted_class.split('-')[1]
+            result = (lambda x : 'edible' if x == 'edible' else predicted_class.split('-')[1])(predicted_class)
             image_name = image_path.split('/')[-1]
             blob = bucket.blob('food-images/' + image_name)
             blob.upload_from_filename(image_path) 
