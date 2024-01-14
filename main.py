@@ -15,7 +15,7 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image as tf_image
 from zipfile import ZipFile 
 
-gdown.download('https://drive.google.com/uc?id=1cRiJkt9RtHZB-qITlGobWpe81h7w-phz')
+gdown.download('https://drive.google.com/uc?id=1cRiJkt9RtHZB-qITlGobWpe81h7w-phz', output='model.zip', quiet=False)
 with ZipFile('./model.zip', 'r') as modelFolder: 
     modelFolder.extractall()
 
