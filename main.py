@@ -106,7 +106,7 @@ def predict_edible_classification(data):
                 'rice - edible', 'rice - inedible'
             ]
             predicted_class = class_list[np.argmax(classificationResult[0])]
-            result = (lambda x : 'edible' if x == 'edible' else predicted_class.split('-')[1])(predicted_class)
+            result = (lambda x : 'edible' if x == 'edible' else predicted_class.split('-')[1].strip())(predicted_class)
             image_name = image_path.split('/')[-1]
             blob = bucket.blob('food-images/' + image_name)
             blob.upload_from_filename(image_path) 
